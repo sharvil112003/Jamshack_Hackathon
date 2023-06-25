@@ -1,14 +1,18 @@
-const express = require('express');
+// const express = require('express');
 const bodyParser = require('body-parser');
-// const bcrypt = require('bcrypt');
+// // const bcrypt = require('bcrypt');
+// const mongoose = require('mongoose');
+// const fs = require('fs');
+
+const express = require('express');
 const mongoose = require('mongoose');
-const fs = require('fs');
-const multer = require('multer');
+const ejs = require('ejs');
+const { kStringMaxLength } = require('buffer');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+app.set('view engine', 'ejs');
 const database = module.exports = () => {
     const connectionParams  = {
       useNewUrlParser :true,
@@ -23,6 +27,20 @@ try{
 
     // const getProduct = require('./models.js');
     // getProduct();
+
+
+//**************** ERROR **********
+    const Product = require('./models.js');
+
+    app.get('/', (req, res) => {
+        Product.find({})
+    .exec()
+    .then(data => {
+      res.render('index', {
+        dataList: data
+      });
+    })
+  });
 
 
 //  SignUp Function 
@@ -316,8 +334,8 @@ catch(error){
 
 database();
 
-app.listen(5050, () => {
-console.log("Server is running at port 5000");
+app.listen(3000, () => {
+console.log("Server is running at port 3000");
 });
 
 
