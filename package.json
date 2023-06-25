@@ -1,0 +1,27 @@
+{
+  "name": "jamshack_bb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kshitijnark/JamShack_BB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kshitijnark/JamShack_BB/issues"
+  },
+  "homepage": "https://github.com/Kshitijnark/JamShack_BB#readme",
+  "dependencies": {
+    "connect": "^3.7.0",
+    "express": "^4.18.2",
+    "mongodb": "4.1",
+    "mongoose": "^7.3.1",
+    "serve-static": "^1.15.0"
+  }
+}
