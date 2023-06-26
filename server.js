@@ -5,6 +5,10 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path=require('path');
 
+
+const { createProduct, Product, createSignup ,Signup } = require('./models.js');
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
@@ -35,7 +39,7 @@ try{
     app.get('/details/:id', (req, res) => {
       const cardId = req.params.id; // Get the card ID from the route parameters
     
-      const Product = require('./models.js');
+      // const Product = require('./models.js');
 
       // Fetch the card information from MongoDB using the cardId
       Product.findById(cardId)
@@ -55,7 +59,7 @@ try{
 
 
 
-    const Product = require('./models.js');
+    // const Product = require('./models.js');
 
     app.get('/', (req, res) => {
         Product.find({})
@@ -67,15 +71,64 @@ try{
     })
   });
 
-  app.get('/demo', (req, res) => {
-    Product.find({})
+
+  app.get('/buy', (req, res) => {
+    Product.find({sellorrent:"Sell"})
 .exec()
 .then(data => {
-  res.render('demo', {
+  res.render('buy', {
     dataList: data
   });
+  console.log(data);
 })
 });
+
+app.get('/rent', (req, res) => {
+  Product.find({sellorrent:"Rent"})
+.exec()
+.then(data => {
+res.render('rent', {
+  dataList: data
+});
+
+})
+});
+
+//   app.get('/demo', (req, res) => {
+
+//     const switchValue = req.query.switch; // Get the value of the 'switch' query parameter
+//      console.log(switchValue);
+//   let filter = {};
+//   if (switchValue === "1") {
+//     console.log("Sell")
+//     filter = { sellorrent: "Sell" }; // Filter for 'sell' items
+//   } else if (switchValue === "0") {
+//     console.log("Buy")
+//     filter = { sellorrent: "Rent" }; // Filter for 'rent' items
+//   }
+
+//     Product.find(filter)
+// .exec()
+// .then(data => {
+//   res.render('demo', {
+//     dataList: data
+//   });
+// })
+// });
+
+
+
+
+
+//   app.get('/demo', (req, res) => {
+//     Product.find({})
+// .exec()
+// .then(data => {
+//   res.render('demo', {
+//     dataList: data
+//   });
+// })
+// });
 
 //  SignUp Function 
 
@@ -108,7 +161,7 @@ try{
 
       try {
         
-          const createSignup = require('./models.js');
+          // const createSignup = require('./models.js');
           createSignup(fname, lname,age,email,password,phone,address,city,zipcode);
     
         res.send('Signup successful!');
@@ -137,7 +190,7 @@ app.post('/login', async (req, res) => {
   try {
     var email = req.body.email;
       var password=req.body.password;
-      const Signup = require('./models.js');
+      // const Signup = require('./models.js');
       const user = await Signup.findOne({ email })
 
 
@@ -345,7 +398,7 @@ app.post('/login', async (req, res) => {
 
         try {
           
-            const createProduct = require('./models.js');
+            // const createProduct = require('./models.js');
             createProduct(model_name, category,physical_condition,warranty,date_of_purchase,color,dimension,quantity,price,description,photosurl,sellorrent);
       
           res.send('Signup successful!');
