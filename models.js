@@ -173,3 +173,12 @@ module.exports.createSignup = createSignup;
 module.exports.Signup = Signup;
 
 
+// createDocument();
+
+
+// const getProduct = async() =>{
+//   const result = await Product.find();
+//   console.log(result);
+// }
+// module.exports =getProduct;
+s
