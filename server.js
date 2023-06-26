@@ -308,7 +308,7 @@ app.post('/', async (req, res) => {
             // const createProduct = require('./models.js');
             createProduct(model_name, category,physical_condition,warranty,date_of_purchase,color,dimension,quantity,price,description,photosurl,sellorrent);
       
-          res.send('Signup successful!');
+            res.redirect('/');
         } catch (error) {
           console.error('Error signing up:', error);
           res.send('Error signing up');
