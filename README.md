@@ -22,6 +22,7 @@ Presentation Link: https://drive.google.com/file/d/1Fa4dbGi6MARtxysKJ1RPu-6oNmOH
 1)	Clone the git repository 
 2)	Run the server.js file 
 3)	Run the link http://127.0.0.1:8080/ in chrome browser
+4) After signup sucessful 
 
 ### Features 
 * Images and videos of product
