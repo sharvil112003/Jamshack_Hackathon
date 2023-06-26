@@ -24,80 +24,67 @@
 <body>
     <div class="mainBody">
     <div class="header1">
-<form action="">
+      <div class="1" style="display:flex">
+        <div class="2">
+          <form action="">
             <img class="logo" src="images/logo.png" >
                     <input type="search" class="search" placeholder="Search for Products...">
                     <button type="submit">Search</button>
-                    <a href="https://web.telegram.org/a/#6090096316"> <i class="fa fa-telegram" style="position:relative;left:300px;font:24px;color:rgb(0, 107, 221)">ModishTradeBot</i></a>
-                    
-                   <button type" id="switchrent" name="switch" value=0 style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ;margin-left: 106vh;" onclick="donate()">Donate</button>
-                   <button type" id="switchrent" name="switch" value=0 style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ;" onclick="sell()">Sell a Product</button>
-                  </form>
+                   <a href="https://web.telegram.org/a/#6090096316"> <i class="fa fa-telegram" style="position:relative;left:300px;font:24px;color:rgb(0, 107, 221)">ModishTradeBot</i></a>
                    
+                </form>
+        </div>
+        <div class="3">
+          <button type" id="switchrent" name="switch" value=2 style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ; margin-left: 120vh;margin-top: 1vh;" onclick="sell()">Sell a product</button>
+        </div>
+              
+      </div>
                        
     <!-- =============================== * navbar * ============================================ -->
+    <style>
+      .textButton {
+          background: none;
+          border: none;
+          color: black;
+      }
+
+      #textButton:hover {
+          background-color: green;
+      }
+  </style>
+
+
                 <div style="background-color: #cee6e7; padding: 10px;width: 100%;justify-content: space-between;">
-                    <button class="btn btn-primary dropdown-toggle textButton"  type="button" data-bs-toggle="dropdown">
+                    <button class="btn btn-primary  textButton" onclick="mobile()" type="button" data-bs-toggle="dropdown">
                         Mobile Phones
                          
                       </button>
-                      <style>
-                        .textButton {
-                            background: none;
-                            border: none;
-                            color: black;
-                        }
-                 
-                        #textButton:hover {
-                            background-color: green;
-                        }
-                    </style>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                      <button class="btn btn-primary dropdown-toggle textButton" type="button" data-bs-toggle="dropdown">
+                      
+                      <button class="btn btn-primary textButton" onclick="electronic()" type="button" data-bs-toggle="dropdown">
                         Electronic Appliances
                         
                       </button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                      <button class="btn btn-primary dropdown-toggle textButton" type="button" data-bs-toggle="dropdown">
+
+                      <button class="btn btn-primary  textButton" onclick="bike()" type="button" data-bs-toggle="dropdown">
                         Bikes and Cars
                         
                       </button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                      <button class="btn btn-primary dropdown-toggle textButton" type="button" data-bs-toggle="dropdown">
+
+
+                      <button class="btn btn-primary textButton" onclick="furniture()" type="button" data-bs-toggle="dropdown">
                         Furniture
                         
                       </button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                      <button class="btn btn-primary dropdown-toggle textButton" type="button" data-bs-toggle="dropdown">
+
+                      <button class="btn btn-primary textButton" onclick="books()" type="button" data-bs-toggle="dropdown">
                         Books,Sports and Hobbies
                        
                       </button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
                       
-                      <button type" id="switchbuy" name="switch" value=1  style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ;" onclick="buy()">BUY</button>
-                      <button type" id="switchrent" name="switch" value=0 style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ;" onclick="donate()">Donate</button>
-                        
                        
+                      <button type" id="switchbuy" name="switch" value=1  style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ;" onclick="buy()">BUY</button>
+                      <button type" id="switchrent" name="switch" value=0 style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ;" onclick="rent()">RENT</button>
+                      <button type" id="switchrent" name="switch" value=2 style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ;" onclick="donate()">Donate</button>
                         
                      
                 </div>
@@ -267,19 +254,34 @@ function donate(){
   </script>
 
 <script>
-  function login(){
-   window.location.replace('http://localhost:8080/login');
- }
- 
- function sign_up(){
-   window.location.replace('http://localhost:8080/sign_up');
- }
- 
+
  function buy(){
    window.location.replace('http://localhost:8080/buy');
  }
  
+ function sell(){
+  window.location.replace('http://127.0.0.1:8080/sell');
+}
+function donate(){
+  window.location.replace('http://127.0.0.1:8080/donate');
+}
  
+
+function mobile(){
+  window.location.replace('http://127.0.0.1:8080/mobile');
+}
+function electronic(){
+  window.location.replace('http://127.0.0.1:8080/electronic');
+}
+function bike(){
+  window.location.replace('http://127.0.0.1:8080/bike');
+}
+function furniture(){
+  window.location.replace('http://127.0.0.1:8080/furniture');
+}
+function books(){
+  window.location.replace('http://127.0.0.1:8080/books');
+}
  </script>
 
 

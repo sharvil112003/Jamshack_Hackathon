@@ -315,6 +315,61 @@ app.post('/', async (req, res) => {
         }
       });
 
+
+      app.get('/mobile', (req, res) => {
+        Product.find({category:"Mobile Phones"})
+      .exec()
+      .then(data => {
+      res.render('mobile', {
+        dataList: data
+      });
+      
+      })
+      });
+
+      app.get('/electronic', (req, res) => {
+        Product.find({category:"Electronics Appliances"})
+      .exec()
+      .then(data => {
+      res.render('electronic', {
+        dataList: data
+      });
+      
+      })
+      });
+
+      app.get('/bike', (req, res) => {
+        Product.find({category:"Bikes and Car"})
+      .exec()
+      .then(data => {
+      res.render('bike', {
+        dataList: data
+      });
+      
+      })
+      });
+
+      app.get('/furniture', (req, res) => {
+        Product.find({category:"Furnitures"})
+      .exec()
+      .then(data => {
+      res.render('furniture', {
+        dataList: data
+      });
+      
+      })
+      });
+
+      app.get('/books', (req, res) => {
+        Product.find({category:"Books games and hobbies"})
+      .exec()
+      .then(data => {
+      res.render('books', {
+        dataList: data
+      });
+      
+      })
+      });
 }
 catch(error){
   console.log(error);
