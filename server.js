@@ -234,10 +234,13 @@ app.post('/', async (req, res) => {
         if (password === user.password) {
           res.redirect('/index');
         } else {
-          res.send('Invalid password!');
+          res.redirect('/');
+          alert("Wrong Password !!!");
+          
         }
       } else {
-        res.send('User not found!');
+        res.redirect('/');
+        alert("Account Not Exist !!!!");
       }
   } 
   
