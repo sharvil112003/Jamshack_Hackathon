@@ -1,6 +1,6 @@
-const res = require("express/lib/response");
+// const res = require("express/lib/response");
 const mongoose   = require("mongoose");
-const { ObjectId, Decimal128 } = require("mongodb");
+// const { ObjectId, Decimal128 } = require("mongodb");
 
 // ************************      For sell form  *******************************************************
 
@@ -48,7 +48,6 @@ const productSchema = new mongoose.Schema({
       photosurl:{
         type: String,
       },
-
       sellorrent :{
         type : String,
       }
@@ -86,10 +85,14 @@ const productSchema = new mongoose.Schema({
     }catch(e){}
 }
 
+
+module.exports.createProduct = createProduct;
+module.exports.Product = Product;
+
 // // createDocument();
 
 // module.exports = createProduct;
-module.exports = Product;
+// module.exports = Product;
 
 
 
@@ -164,13 +167,9 @@ const createSignup  = async(fname, lname,age,email,password,phone,address,city,z
   }catch(e){console.log(e);}
 }
   
-// createDocument();
 
-// module.exports = createSignup;
-// module.exports = Signup;
 
-// const getProduct = async() =>{
-//   const result = await Product.find();
-//   console.log(result);
-// }
-// module.exports =getProduct;
+module.exports.createSignup = createSignup;
+module.exports.Signup = Signup;
+
+

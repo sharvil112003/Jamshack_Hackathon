@@ -120,9 +120,37 @@ body{
 .container3{
     background-color: #d7f0ee;
     margin: 0vh 10vh;
-    border-radius: 10vh;
+    border-radius: 10px;
     box-shadow: 5px 10px #96b5b2;
-    display:flex
+    display:flex;
+    position: relative;
+    top: -500px;
+    height: 350px;
+    
+}
+.container2{
+    background-color: #d7f0ee;
+    margin: 0vh 10vh;
+    border-radius: 10px;
+    box-shadow: 5px 10px #96b5b2;
+    display:flex;
+    position: relative;
+    left: 832px;
+    width: 350px;
+    top: -580px;
+    height: 250px;
+}
+.container4{
+    background-color: #d7f0ee;
+    margin: 0vh 10vh;
+    border-radius: 10px;
+    box-shadow: 5px 10px #96b5b2;
+    display:flex;
+    position: relative;
+    left: 832px;
+    width: 350px;
+    top: -550px;
+    height: 280px;
 }
 
 
