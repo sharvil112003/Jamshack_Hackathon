@@ -34,7 +34,7 @@
                 </form>
         </div>
         <div class="3">
-          <button type" id="switchrent" name="switch" value=2 style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ; margin-left: 120vh;margin-top: 1vh;" onclick="sell()">Sell/Rent/Donate</button>
+          <button type" id="switchrent" name="switch" value=2 style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ; margin-left: 110vh;margin-top: 1vh;" onclick="sell()">Sell/Rent/Donate/Demand</button>
         </div>
               
       </div>
@@ -85,7 +85,7 @@
                       <button type" id="switchbuy" name="switch" value=1  style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ;" onclick="buy()">BUY</button>
                       <button type" id="switchrent" name="switch" value=0 style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ;" onclick="rent()">RENT</button>
                       <button type" id="switchrent" name="switch" value=2 style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ;" onclick="donate()">Donate</button>
-                        
+                      <button type" id="switchrent" name="switch" value=2 style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ;" onclick="demand()">Demand</button>
                      
                 </div>
     
@@ -228,6 +228,11 @@ function mobile(){
 function electronic(){
   window.location.replace('http://127.0.0.1:8080/electronic');
 }
+
+function demand(){
+  window.location.replace('http://127.0.0.1:8080/demand');
+}
+
 function bike(){
   window.location.replace('http://127.0.0.1:8080/bike');
 }

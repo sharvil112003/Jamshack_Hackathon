@@ -82,9 +82,11 @@
                       </button>
                       
                        
+                      
                       <button type" id="switchbuy" name="switch" value=1  style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ;" onclick="buy()">BUY</button>
                       <button type" id="switchrent" name="switch" value=0 style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ;" onclick="rent()">RENT</button>
                       <button type" id="switchrent" name="switch" value=2 style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ;" onclick="donate()">Donate</button>
+                      <button type" id="switchrent" name="switch" value=2 style="background-color: #01404F;padding: 5px;border-radius: 8px;color:white ;" onclick="demand()">Demand</button>
                         
                      
                 </div>
@@ -220,6 +222,10 @@ function rent(){
 
 function donate(){
   window.location.replace('http://127.0.0.1:8080/donate');
+}
+
+function demand(){
+  window.location.replace('http://127.0.0.1:8080/demand');
 }
 
 function mobile(){
