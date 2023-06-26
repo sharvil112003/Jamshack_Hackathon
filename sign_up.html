@@ -1,80 +1,85 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title> Signup Form</title>
-		
-		
-<link rel="stylesheet"
-href=
-"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-integrity=
-"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-crossorigin="anonymous">	
-		
-<link rel="stylesheet" type="text/css" href="signup.css">
-		
-</head>
-<body style="background-color: bisque;">
-	
-	<br>
-	<br>
-	<br>
-	<div class="container" style="background-color: bisque;padding: 20px;" >
-		<div class="row">
-		<div class="col-md-3">
-					
-		</div>
-				
-		<div class="col-md-6 main" style="background-color: #AED5D2;border-radius: 16px;padding: 20px;">
-					
-			<form action="/sign_up" method="POST">
-					<img src="images/logo.png" style="position: relative;left:200px;width: 150px;height:100px;box-shadow: #696969;border-radius: 16px;">
-			<h1 style="position: relative;left:150px;"> Signup form </h1>
-			<style>.box{
+	<head>
+		<title> Signup Form</title>
+
+		<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+			integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+			crossorigin="anonymous">
+
+		<link rel="stylesheet" type="text/css" href="signup.css">
+
+	</head>
+	<body style="background-color: bisque;">
+
+		<br>
+		<br>
+		<br>
+		<div class="container" style="background-color: bisque;padding: 20px;">
+			<div class="row">
+				<div class="col-md-3">
+
+				</div>
+
+				<div class="col-md-6 main"
+					style="background-color: #AED5D2;border-radius: 16px;padding: 20px;">
+
+					<form action="/sign_up" method="POST">
+						<img src="images/logo.png"
+							style="position: relative;left:200px;width: 150px;height:100px;box-shadow: #696969;border-radius: 16px;">
+						<h1 style="position: relative;left:150px;"> Signup form </h1>
+						<style>.box{
 				border-radius: 16px;box-shadow: #696969;
 				position: relative;left:80px;padding: 10px;width: 370px;margin-bottom: 15px;
 			}</style>
-							
-			<input class="box" type="text" name="fname" id="name"
-			placeholder="First Name" required /><br>
-			<input class="box" type="text" name="lname" id="name"
-			placeholder="Last Name" required /><br>
-			<input class="box" type="text" name="age" id="name"
-			placeholder="Age" required /><br>
-			<input class="box" type="text" name="email" id="age"
-			placeholder="E-Mail " required /><br>
-							
-			<input class="box" type="password" name="password"
-			id="password" placeholder="Password " required/><br>
-							
-			<input class="box" type="text" name="phone" id="phone"
-			placeholder="Phone Number " required/><br>
+
+						<input class="box" type="text" name="fname" id="name"
+							placeholder="First Name" required /><br>
+						<input class="box" type="text" name="lname" id="name"
+							placeholder="Last Name" required /><br>
+						<input class="box" type="text" name="age" id="name"
+							placeholder="Age" required /><br>
+						<input class="box" type="text" name="email" id="age"
+							placeholder="E-Mail " required /><br>
+
+						<input class="box" type="password" name="password"
+							id="password" placeholder="Password " required /><br>
+
+						<input class="box" type="text" name="phone" id="phone"
+							placeholder="Phone Number " required /><br>
 						<br>
-			<input class="box" type="text" name="address" id="address"
-			placeholder="Address " required/><br>
-									<br>
-			<input class="box" type="text" name="city" id="city"
-			placeholder="City" required/><br>
-												<br>
-		<input class="box" type="text" name="zipcode" id="zipcode"
-			placeholder="ZIP Code " required/><br>
+						<input class="box" type="text" name="address" id="address"
+							placeholder="Address " required /><br>
 						<br>
-			<input type="submit" class="btn btn-primary" style="padding: 10px;margin-bottom: 50px;position: relative;left: 180px;width: 200px;border-radius: 16px;background-color: #01404F;" id="submitDetails"
-			name="submitDetails" value="Submit" /><br>
-					
-			</form>
-			<script>function backtoindex(){
-				window.location.replace('http://127.0.0.1:8080');
-			  }</script>
-	<Button class="btn btn-primary" onclick="backtoindex()" style="position: relative;left: 60px;background-color: #01404F;">Back to Modish Trade</Button
-					
-		</div>
-				
-				
-		<div class="col-md-3">
-		</div>
-				
-	</div>
-	</div>
-</body>
-</html>	
+						<input class="box" type="text" name="city" id="city"
+							placeholder="City" required /><br>
+						<br>
+						<input class="box" type="text" name="zipcode" id="zipcode"
+							placeholder="ZIP Code " required /><br>
+						<br>
+						<input type="submit" class="btn btn-primary"
+							style="padding: 10px;margin-bottom: 50px;position: relative;left: 180px;width: 200px;border-radius: 16px;background-color: #01404F;"
+							id="submitDetails"
+							name="submitDetails" value="Submit" /><br>
+
+					</form>
+					<button class="btn btn-primary" onclick="login()"
+						style="position: relative;left: 60px;background-color: #01404F;">Go to
+						login page</Button>
+
+					</div>
+
+					<div class="col-md-3">
+					</div>
+
+				</div>
+			</div>
+
+			<script>
+				function login(){
+  window.location.replace('http://127.0.0.1:8080/');
+}
+			</script>
+		</body>
+	</html>

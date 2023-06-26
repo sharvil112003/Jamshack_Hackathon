@@ -120,7 +120,7 @@ try{
 
     // const Product = require('./models.js');
 
-    app.get('/', (req, res) => {
+    app.get('/index', (req, res) => {
         Product.find({})
     .exec()
     .then(data => {
@@ -197,7 +197,7 @@ res.render('donate', {
         
           // const createSignup = require('./models.js');
           createSignup(fname, lname,age,email,password,phone,address,city,zipcode);
-          res.redirect('/login');
+          res.redirect('/');
         var u_id = Product.find({"fname":fname},{_id:1}); 
       } catch (error) {
         console.error('Error signing up:', error);
@@ -208,7 +208,7 @@ res.render('donate', {
     
 /******************* Login ***************************/
 
-app.get('/login', (req, res) => {
+app.get('/', (req, res) => {
   fs.readFile('login.html', 'utf8', (err, data) => {
     if (err) {
       console.error('Error reading login.html:', err);
@@ -220,7 +220,7 @@ app.get('/login', (req, res) => {
   });
 });
 
-app.post('/login', async (req, res) => {
+app.post('/', async (req, res) => {
 
   try {
     var email = req.body.email;
@@ -232,7 +232,7 @@ app.post('/login', async (req, res) => {
       if (user) {
   
         if (password === user.password) {
-          res.redirect('/');
+          res.redirect('/index');
         } else {
           res.send('Invalid password!');
         }
