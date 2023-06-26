@@ -1,8 +1,13 @@
 // const express = require('express');
 const bodyParser = require('body-parser');
-// // const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 // const mongoose = require('mongoose');
-// const fs = require('fs');
+const fs = require('fs');
+const path=require('path');
+
+
+const { createProduct, Product, createSignup ,Signup } = require('./models.js');
+
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -11,8 +16,58 @@ const { kStringMaxLength } = require('buffer');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/public/'));
 
+var Publishable_Key = 'pk_test_51NN9fBSI90304Yamaxa65rmRDkvAmeR4h2kaOOtUeMdrFXpDkg58iAQtAlG2bVTpuXCIFSjjp8wd8i45x8y07BPX003MWhB4CF'
+var Secret_Key = 'sk_test_51NN9fBSI90304YamaLo78Fi6vQS605Edtibzcm3DOVT2bxFoP72jGxlffdpCWUSEsN5dwghtUnZvzxis6pgRdAOz00LAJIH1rJ'
+
+const stripe = require('stripe')(Secret_Key)
+app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
+
+app.get('/', function(req, res){
+  res.render('home', {
+     key: Publishable_Key
+  })
+})
+
+app.post('/payment', function(req, res){
+  // Moreover you can take more details from user
+  // like Address, Name, etc from form
+  stripe.customers.create({
+      email: req.body.stripeEmail,
+      source: req.body.stripeToken,
+      name: 'Gourav Hammad',
+      address: {
+          line1: 'TC 9/4 Old MES colony',
+          postal_code: '452331',
+          city: 'Indore',
+          state: 'Madhya Pradesh',
+          country: 'India',
+      }
+  })
+  .then((customer) => {
+
+      return stripe.charges.create({
+          amount: 2500,     // Charging Rs 25
+          description: 'Web Development Product',
+          currency: 'INR',
+          customer: customer.id
+      });
+  })
+  .then((charge) => {
+      res.send("Success")  // If no error occurs
+  })
+  .catch((err) => {
+      res.send(err)       // If some error occurs
+  });
+})
+
+app.listen(5000, function(error){
+  if(error) throw error
+
+
+
 const database = module.exports = () => {
     const connectionParams  = {
       useNewUrlParser :true,
@@ -29,8 +84,31 @@ try{
     // getProduct();
 
 
-//**************** ERROR **********
-    const Product = require('./models.js');
+
+    app.get('/details/:id', (req, res) => {
+      const cardId = req.params.id; // Get the card ID from the route parameters
+    
+      // const Product = require('./models.js');
+
+      // Fetch the card information from MongoDB using the cardId
+      Product.findById(cardId)
+        .exec()
+        .then(data => {
+          res.render('product', {
+            card: data
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching card details:', error);
+          res.status(500).send('Internal Server Error');
+        });
+    });
+
+    
+
+
+
+    // const Product = require('./models.js');
 
     app.get('/', (req, res) => {
         Product.find({})
@@ -42,6 +120,64 @@ try{
     })
   });
 
+
+  app.get('/buy', (req, res) => {
+    Product.find({sellorrent:"Sell"})
+.exec()
+.then(data => {
+  res.render('buy', {
+    dataList: data
+  });
+  console.log(data);
+})
+});
+
+app.get('/rent', (req, res) => {
+  Product.find({sellorrent:"Rent"})
+.exec()
+.then(data => {
+res.render('rent', {
+  dataList: data
+});
+
+})
+});
+
+//   app.get('/demo', (req, res) => {
+
+//     const switchValue = req.query.switch; // Get the value of the 'switch' query parameter
+//      console.log(switchValue);
+//   let filter = {};
+//   if (switchValue === "1") {
+//     console.log("Sell")
+//     filter = { sellorrent: "Sell" }; // Filter for 'sell' items
+//   } else if (switchValue === "0") {
+//     console.log("Buy")
+//     filter = { sellorrent: "Rent" }; // Filter for 'rent' items
+//   }
+
+//     Product.find(filter)
+// .exec()
+// .then(data => {
+//   res.render('demo', {
+//     dataList: data
+//   });
+// })
+// });
+
+
+
+
+
+//   app.get('/demo', (req, res) => {
+//     Product.find({})
+// .exec()
+// .then(data => {
+//   res.render('demo', {
+//     dataList: data
+//   });
+// })
+// });
 
 //  SignUp Function 
 
@@ -74,15 +210,17 @@ try{
 
       try {
         
-          const createSignup = require('./models.js');
+          // const createSignup = require('./models.js');
           createSignup(fname, lname,age,email,password,phone,address,city,zipcode);
     
         res.send('Signup successful!');
+        var u_id = Product.find({"fname":fname},{_id:1}); 
       } catch (error) {
         console.error('Error signing up:', error);
         res.send('Error signing up');
       }
     });
+
     
 /******************* Login ***************************/
 
@@ -103,7 +241,7 @@ app.post('/login', async (req, res) => {
   try {
     var email = req.body.email;
       var password=req.body.password;
-      const Signup = require('./models.js');
+      // const Signup = require('./models.js');
       const user = await Signup.findOne({ email })
 
 
@@ -311,7 +449,7 @@ app.post('/login', async (req, res) => {
 
         try {
           
-            const createProduct = require('./models.js');
+            // const createProduct = require('./models.js');
             createProduct(model_name, category,physical_condition,warranty,date_of_purchase,color,dimension,quantity,price,description,photosurl,sellorrent);
       
           res.send('Signup successful!');
@@ -334,10 +472,8 @@ catch(error){
 
 database();
 
-app.listen(3000, () => {
-console.log("Server is running at port 3000");
+app.listen(5050, () => {
+console.log("Server is running at port 5050");
 });
 
-
-
-// 
+}); 
