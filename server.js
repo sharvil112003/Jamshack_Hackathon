@@ -164,6 +164,18 @@ res.render('donate', {
 })
 });
 
+app.get('/demand', (req, res) => {
+  Product.find({sellorrent:"Demand"})
+.exec()
+.then(data => {
+res.render('demand', {
+  dataList: data
+});
+
+})
+});
+
+
 //***************************************************SignUp Function************************************************************************* //
 
     app.get('/sign_up', (req, res) => {
@@ -311,7 +323,7 @@ app.post('/', async (req, res) => {
             // const createProduct = require('./models.js');
             createProduct(model_name, category,physical_condition,warranty,date_of_purchase,color,dimension,quantity,price,description,photosurl,sellorrent);
       
-            res.redirect('/');
+            res.redirect('/index');
         } catch (error) {
           console.error('Error signing up:', error);
           res.send('Error signing up');
