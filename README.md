@@ -31,5 +31,5 @@ Presentation Link: https://drive.google.com/file/d/1Fa4dbGi6MARtxysKJ1RPu-6oNmOH
 * Donate feature
  
 ### About the website 
-This website helps us to easily buy,sell,rent,donate and demand products at our wish. We also have sucessfully integrated a payment interface for flawless payment and also integrated a telegram chatbot for user a friendly experience while demanding or donating a product . The buyer can also chat with the seller via the WhatsApp chat link provided in the website. 
-The website is easy to navigate and also provides a great user interface and is also connected to mongodb through mongoose driver which are used for fast transaction speed.  
+This website helps us to easily buy,sell,rent,donate and demand products at our wish. We also have sucessfully integrated a payment interface for flawless payment and also integrated a telegram chatbot for user a friendly experience while demanding or donating a product . The buyer can also chat with the seller via the WhatsApp chat link provided in the website. <br>
+</br>The website is easy to navigate and also provides a great user interface and is also connected to mongodb through mongoose driver which are used for fast transaction speed.  
