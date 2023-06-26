@@ -1,8 +1,9 @@
 // const express = require('express');
 const bodyParser = require('body-parser');
-// // const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 // const mongoose = require('mongoose');
-// const fs = require('fs');
+const fs = require('fs');
+const path=require('path');
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -11,6 +12,7 @@ const { kStringMaxLength } = require('buffer');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/public/'));
 
 app.set('view engine', 'ejs');
 const database = module.exports = () => {
@@ -29,7 +31,30 @@ try{
     // getProduct();
 
 
-//**************** ERROR **********
+
+    app.get('/details/:id', (req, res) => {
+      const cardId = req.params.id; // Get the card ID from the route parameters
+    
+      const Product = require('./models.js');
+
+      // Fetch the card information from MongoDB using the cardId
+      Product.findById(cardId)
+        .exec()
+        .then(data => {
+          res.render('product', {
+            card: data
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching card details:', error);
+          res.status(500).send('Internal Server Error');
+        });
+    });
+
+    
+
+
+
     const Product = require('./models.js');
 
     app.get('/', (req, res) => {
@@ -42,6 +67,15 @@ try{
     })
   });
 
+  app.get('/demo', (req, res) => {
+    Product.find({})
+.exec()
+.then(data => {
+  res.render('demo', {
+    dataList: data
+  });
+})
+});
 
 //  SignUp Function 
 
@@ -334,8 +368,8 @@ catch(error){
 
 database();
 
-app.listen(3000, () => {
-console.log("Server is running at port 3000");
+app.listen(5050, () => {
+console.log("Server is running at port 5050");
 });
 
 
